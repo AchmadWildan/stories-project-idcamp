@@ -24,8 +24,8 @@ export default defineConfig({
   plugins: [
     VitePWA({
       strategies: 'injectManifest', // Gunakan strategi InjectManifest
-      //srcDir: 'src', // Direktori tempat file service worker berada
       filename: 'sw.js', // Nama file service worker
+      base: '/stories-project-idcamp/',
       manifest: {
         name: 'My Vite App',
         short_name: 'ViteApp',
@@ -33,12 +33,12 @@ export default defineConfig({
         theme_color: '#ffffff',
         icons: [
           {
-            src: '/icon-192x192.png',
+            src: '/stories-project-idcamp/icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/icon-512x512.png',
+            src: '/stories-project-idcamp/icon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
           },
