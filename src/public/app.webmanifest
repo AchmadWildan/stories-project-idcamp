@@ -1,7 +1,7 @@
 {
-  "id": "/#/",
-  "start_url": "/#/",
-  "scope": "/",
+  "id": "stories-project-idcamp/#/",
+  "start_url": "stories-project-idcamp/#/",
+  "scope": "stories-project-idcamp/",
   "name": "Stories App",
   "short_name": "Stories",
   "description": "Aplikasi untuk berbagi cerita.",
