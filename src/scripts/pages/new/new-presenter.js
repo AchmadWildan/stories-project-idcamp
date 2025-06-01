@@ -37,13 +37,13 @@ export default class NewPresenter {
       });
       
       if (result.isConfirmed) {
+        const response = await this.#model.storeNewReport(data);
         if (!response.ok) {
           console.error('postNewReport: response:', response);
           this.#view.storeFailed(response.message);
           return response; 
         }
         
-        const response = await this.#model.storeNewReport(data);
         Swal.fire("Saved!", "", "success");
         this.#view.showSubmitLoadingButton();
         this.#view.storeSuccessfully(response.message, response.listStory);
