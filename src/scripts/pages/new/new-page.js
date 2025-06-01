@@ -123,22 +123,17 @@ export default class NewPage {
       event.preventDefault();
 
       const data = {
-
-
         description: this.#form.elements.namedItem('description').value,
         photo: this.#takenDocumentations.map((picture) => picture.blob),
         lat: this.#form.elements.namedItem('latitude').value,
         lon: this.#form.elements.namedItem('longitude').value,
       };
-      // console.log("data page => ", data);
       const response = await this.#presenter.postNewReport(data);
 
-      // Periksa apakah postNewReport berhasil
       if (!response || !response.ok) {
         console.error('Gagal membuat laporan:', response?.message || 'Unknown error');
-        return; // Hentikan eksekusi jika terjadi error
+        return; 
       }
-      // Bangun schema JSON untuk notifikasi
       const notificationData = {
         title: 'Story berhasil dibuat',
         options: {
@@ -304,8 +299,7 @@ export default class NewPage {
     console.log(message);
     this.clearForm();
 
-
-    location.href = 'stories-project-idcamp/';
+    // location.href = 'stories-project-idcamp/';
   }
 
   storeFailed(message) {

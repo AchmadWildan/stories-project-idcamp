@@ -27,8 +27,7 @@ export default class NewPresenter {
         lon: parseFloat(lon),
       };
   
-      const response = await this.#model.storeNewReport(data);
-  
+      
       const result = await Swal.fire({
         title: "Do you want to save the story?",
         showDenyButton: true,
@@ -36,14 +35,15 @@ export default class NewPresenter {
         confirmButtonText: "Save",
         denyButtonText: `Don't save`,
       });
-  
+      
       if (result.isConfirmed) {
         if (!response.ok) {
           console.error('postNewReport: response:', response);
           this.#view.storeFailed(response.message);
           return response; 
         }
-  
+        
+        const response = await this.#model.storeNewReport(data);
         Swal.fire("Saved!", "", "success");
         this.#view.showSubmitLoadingButton();
         this.#view.storeSuccessfully(response.message, response.listStory);
