@@ -305,7 +305,7 @@ export default class NewPage {
     this.clearForm();
 
 
-    location.href = '/';
+    location.href = 'stories-project-idcamp/';
   }
 
   storeFailed(message) {
