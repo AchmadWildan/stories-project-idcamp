@@ -299,7 +299,7 @@ export default class NewPage {
     console.log(message);
     this.clearForm();
 
-    location.href = '/';
+    location.href = '/stories-project-idcamp';
   }
 
   storeFailed(message) {
