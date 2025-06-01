@@ -30,19 +30,7 @@ export default defineConfig({
         name: 'My Vite App',
         short_name: 'ViteApp',
         description: 'A Progressive Web App built with Vite',
-        theme_color: '#ffffff',
-        icons: [
-          {
-            src: '/stories-project-idcamp/icon-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/stories-project-idcamp/icon-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-        ],
+        theme_color: '#ffffff',        
       },
       workbox: {
         runtimeCaching: [
