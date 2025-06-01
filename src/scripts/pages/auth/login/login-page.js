@@ -16,14 +16,14 @@ export default class LoginPage {
               <label for="email-input" class="login-form__email-title">Email</label>
 
               <div class="login-form__title-container">
-                <input id="email-input" type="email" name="email" placeholder="Contoh: nama@email.com" value="Achmad@gmail.com">  
+                <input id="email-input" type="email" name="email" placeholder="Contoh: nama@email.com">  
               </div>
             </div>
             <div class="form-control">
               <label for="password-input" class="login-form__password-title">Password</label>
 
               <div class="login-form__title-container">
-                <input id="password-input" type="password" name="password" placeholder="Masukkan password Anda" value="12345678">
+                <input id="password-input" type="password" name="password" placeholder="Masukkan password Anda">
               </div>
             </div>
             <div class="form-buttons login-form__form-buttons">
