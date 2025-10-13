@@ -115,9 +115,15 @@ class App {
 
   async renderPage() {
     const url = getActiveRoute();
-    const page = routes[url] || routes['/404'];
-  
-  
+    const page = routes(url)  
+     if (!page) {
+    // Jika terjadi redirect hash, render ulang setelah hash berubah
+    if (location.hash && (url !== getActiveRoute())) {
+      // Tunggu event loop berikutnya agar hash benar-benar berubah
+      setTimeout(() => this.renderPage(), 0);
+    }
+    return;
+  }
     const transition = transitionHelper({
       updateDOM: async () => {
         this.#content.innerHTML = await page.render();

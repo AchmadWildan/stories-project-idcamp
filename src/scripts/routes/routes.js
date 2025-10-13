@@ -7,14 +7,23 @@ import StoriesDetailPage from '../pages/stories-detail/stories-detail-page';
 import NotFoundPage from '../pages/not-found/not-found-page';
 import { checkUnauthenticatedRouteOnly, checkAuthenticatedRoute } from '../utils/auth';
 
-const routes = {
-  '/login': checkUnauthenticatedRouteOnly(new LoginPage()),
-  '/register': checkUnauthenticatedRouteOnly(new RegisterPage()),
-  '/': checkAuthenticatedRoute(new HomePage()),
-  '/home': checkAuthenticatedRoute(new HomePage()),
-  '/bookmark': checkAuthenticatedRoute(new BookmarkPage()),
-  '/new': checkAuthenticatedRoute(new NewPage()),
-  '/stories-detail/:id': checkAuthenticatedRoute(new StoriesDetailPage()),
-  '/404': new NotFoundPage(),
+const routes = (url) => {
+  switch (url) {
+    case '/login':
+      return checkUnauthenticatedRouteOnly(new LoginPage());
+    case '/register':
+      return checkUnauthenticatedRouteOnly(new RegisterPage());
+    case '/':
+    case '/home':
+      return checkAuthenticatedRoute(new HomePage());
+    case '/bookmark':
+      return checkAuthenticatedRoute(new BookmarkPage());
+    case '/new':
+      return checkAuthenticatedRoute(new NewPage());
+    case '/stories-detail/:id':
+      return checkAuthenticatedRoute(new StoriesDetailPage());
+    default:
+      return new NotFoundPage();
+  }
 };
 export default routes;

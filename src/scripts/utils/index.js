@@ -101,18 +101,8 @@ export async function registerServiceWorker() {
   }
  
   try {
-    // const registration = await navigator.serviceWorker.register('/sw.js');
-    // console.log('Service worker telah terpasang', registration);
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('/stories-project-idcamp/sw.js', { scope: '/stories-project-idcamp/' })
-        .then((registration) => {
-          console.log('Service Worker registered with scope:', registration.scope);
-        })
-        .catch((error) => {
-          console.error('Service Worker registration failed:', error);
-        });
-    }
+    const registration = await navigator.serviceWorker.register('/sw.js');
+    console.log('Service worker telah terpasang', registration);
     // Reload halaman agar service worker mulai mengontrolnya
     if (!navigator.serviceWorker.controller) {
       console.log('Reloading page to activate service worker...');

@@ -4,7 +4,6 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/stories-project-idcamp/',
   root: resolve(__dirname, 'src'),
   publicDir: resolve(__dirname, 'src', 'public'),
   build: {
@@ -25,7 +24,6 @@ export default defineConfig({
     VitePWA({
       strategies: 'injectManifest', // Gunakan strategi InjectManifest
       filename: 'sw.js', // Nama file service worker
-      base: '/stories-project-idcamp/',
       manifest: {
         name: 'My Vite App',
         short_name: 'ViteApp',
