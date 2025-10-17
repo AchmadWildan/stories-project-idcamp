@@ -1,2 +1,3 @@
-APP_URL=<url_aplikasi>
-MAP_SERVICE_API_KEY=<api_key>
+GITHUB_APP_URL=https://achmadwildan.github.io/stories-project-idcamp/
+NETLIFY_APP_URL=https://magical-pie-3112d8.netlify.app/
+FIREBASE_APP_URL=https://stories-project-idcamp.web.app
