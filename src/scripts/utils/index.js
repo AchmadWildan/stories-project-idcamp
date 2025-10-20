@@ -95,6 +95,7 @@ export function isServiceWorkerAvailable() {
 }
  
 export async function registerServiceWorker() {
+  console.log('Mulai mendaftarkan service worker!');
   if (!isServiceWorkerAvailable()) {
     console.log('Service Worker API unsupported');
     return;

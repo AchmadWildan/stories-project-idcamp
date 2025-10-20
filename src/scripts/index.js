@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     navigationDrawer: document.querySelector('#navigation-drawer'),
     skipLinkButton: document.querySelector('#skip-link'),
   });
+  console.log('Sudah masuk index.js dan mau render page');
   await app.renderPage();
+  console.log('Sudah render page dan mau daftar service worker');
   await registerServiceWorker();
   window.addEventListener('hashchange', async () => {
     await app.renderPage();
