@@ -36,7 +36,7 @@ export default class RegisterPage {
               <div id="submit-button-container">
                 <button class="btn" type="submit">Daftar akun</button>
               </div>
-              <p class="register-form__already-have-account">Sudah punya akun? <a href="/login">Masuk</a></p>
+              <p class="register-form__already-have-account">Sudah punya akun? <a href="#/login">Masuk</a></p>
             </div>
           </form>
         </div>
@@ -70,11 +70,18 @@ export default class RegisterPage {
     console.log(message);
 
     // Redirect
-    location.hash = '/login';
+    location.hash = '#/login';
   }
 
   registeredFailed(message) {
-    alert(message);
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: message,
+    }).then(() => {
+      console.error(message);
+    }
+    );
   }
 
   showSubmitLoadingButton() {

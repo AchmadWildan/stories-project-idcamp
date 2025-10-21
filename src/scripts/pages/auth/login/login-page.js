@@ -30,15 +30,15 @@ export default class LoginPage {
               <div id="submit-button-container">
                 <button class="btn" type="submit">Masuk</button>
               </div>
-              <p class="login-form__do-not-have-account">Belum punya akun? <a href="/register">Daftar</a></p>
+              <p class="login-form__do-not-have-account">Belum punya akun? <a href="#/register">Daftar</a></p>
             </div>
           </form>
         </article>
       </section>
     `;
   }
-//    value="achmaddd@gmail.com"
-// value="12345678"
+  //    value="achmaddd@gmail.com"
+  // value="12345678"
   async afterRender() {
     this.#presenter = new LoginPresenter({
       view: this,
@@ -61,15 +61,21 @@ export default class LoginPage {
     });
   }
 
-  loginSuccessfully(message) {   
-    
+  loginSuccessfully(message) {
+
     console.log(message);
 
-    // Redirect
   }
 
   loginFailed(message) {
-    alert(message);
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: message,
+    }).then(() => {
+      console.error(message);
+    }
+    );
   }
 
   showSubmitLoadingButton() {

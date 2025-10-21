@@ -22,12 +22,9 @@ export default class LoginPresenter {
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
-          location.hash = '/login';
+          location.hash = '#/login';
         });
         return
-        // console.error('getLogin: response:', response);
-        // this.#view.loginFailed(response.message);
-        // return;
       }
       Swal.fire({
         position: "center",
@@ -38,7 +35,7 @@ export default class LoginPresenter {
       }).then(() => {
         this.#authModel.putAccessToken(response.loginResult.token);
         this.#view.loginSuccessfully(response.message, response.loginResult);
-        location.hash = '/home';
+        location.hash = '#/home';
       });
     } catch (error) {
       Swal.fire({
@@ -49,7 +46,7 @@ export default class LoginPresenter {
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
-          location.hash = '/login';
+          location.hash = '#/login';
         });
         return
       // console.error('getLogin: error:', error);

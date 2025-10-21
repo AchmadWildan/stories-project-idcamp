@@ -23,15 +23,29 @@ export async function requestNotificationPermission() {
   const status = await Notification.requestPermission();
 
   if (status === 'denied') {
-    alert('Izin notifikasi ditolak.');
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Izin notifikasi ditolak.",
+    }).then(() => {
+      console.error('Izin notifikasi ditolak.');
+    }
+    );
     return false;
   }
 
   if (status === 'default') {
-    alert('Izin notifikasi ditutup atau diabaikan.');
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Izin notifikasi ditutup atau diabaikan.",
+    }).then(() => {
+      console.error('Izin notifikasi ditutup atau diabaikan.');
+    }
+    );
+
     return false;
   }
-
   return true;
 }
 
@@ -55,7 +69,13 @@ export async function subscribe() {
   }
 
   if (await isCurrentPushSubscriptionAvailable()) {
-    alert('Sudah berlangganan push notification.');
+    Swal.fire({
+      icon: "success",
+      title: "Sudah berlangganan push notification.",
+    }).then(() => {
+      console.log('Sudah berlangganan push notification.');
+    }
+    );
     return;
   }
 
@@ -71,7 +91,15 @@ export async function subscribe() {
 
     if (!response.ok) {
       console.error('subscribe: response:', response);
-      alert(failureSubscribeMessage);
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: failureSubscribeMessage,
+      }).then(() => {
+        console.error(failureSubscribeMessage);
+      }
+      );
       // Undo subscribe to push notification
       await pushSubscription.unsubscribe();
       return;
@@ -86,7 +114,14 @@ export async function subscribe() {
     // console.log({ endpoint, keys });
   } catch (error) {
     console.error('subscribe: error:', error);
-    alert(failureSubscribeMessage);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: failureSubscribeMessage,
+      }).then(() => {
+        console.error(failureSubscribeMessage);
+      }
+      );
     await pushSubscription.unsubscribe();
   }
 }
@@ -96,19 +131,41 @@ export async function unsubscribe() {
   try {
     const pushSubscription = await getPushSubscription();
     if (!pushSubscription) {
-      alert('Tidak bisa memutus langganan push notification karena belum berlangganan sebelumnya.');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Tidak bisa memutus langganan push notification karena belum berlangganan sebelumnya.",
+      }).then(() => {
+        console.error('Tidak bisa memutus langganan push notification karena belum berlangganan sebelumnya.');
+      }
+      );
       return;
     }
     const { endpoint, keys } = pushSubscription.toJSON();
     const response = await unsubscribePushNotification({ endpoint });
     if (!response.ok) {
-      alert(failureUnsubscribeMessage);
+      
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: failureUnsubscribeMessage,
+      }).then(() => {
+        console.error(failureUnsubscribeMessage);
+      }
+      );
       console.error('unsubscribe: response:', response);
       return;
     }
     const unsubscribed = await pushSubscription.unsubscribe();
     if (!unsubscribed) {
-      alert(failureUnsubscribeMessage);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: failureUnsubscribeMessage,
+      }).then(() => {
+        console.error(failureUnsubscribeMessage);
+      }
+      );
       await subscribePushNotification({ endpoint, keys });
       return;
     }
@@ -120,7 +177,14 @@ export async function unsubscribe() {
       timer: 1500
     });
   } catch (error) {
-    alert(failureUnsubscribeMessage);
+    Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: failureUnsubscribeMessage,
+      }).then(() => {
+        console.error(failureUnsubscribeMessage);
+      }
+      );
     console.error('unsubscribe: error:', error);
   }
 }

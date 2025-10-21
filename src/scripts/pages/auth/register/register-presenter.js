@@ -17,7 +17,15 @@ export default class RegisterPresenter {
         this.#view.registeredFailed(response.message);
         return;
       }
-
+      Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Account created!",
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          location.hash = '#/login';
+        });
       this.#view.registeredSuccessfully(response.message, response.data);
     } catch (error) {
       console.error('getRegistered: error:', error);

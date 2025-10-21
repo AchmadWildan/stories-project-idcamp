@@ -80,11 +80,11 @@ class App {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes!"
+        confirmButtonText: "Yes"
       }).then((result) => {
         if (result.isConfirmed) {
           getLogout();
-          location.hash = '/login';
+          location.hash = '#/login';
         }
       });
     });

@@ -36,14 +36,14 @@ export function removeAccessToken() {
   }
 }
 
-const unauthenticatedRoutesOnly = ['/login', '/register'];
+const unauthenticatedRoutesOnly = ['#/login', '#/register'];
 
 export function checkUnauthenticatedRouteOnly(page) {
   const url = getActiveRoute();
   const isLogin = !!getAccessToken();
 
   if (unauthenticatedRoutesOnly.includes(url) && isLogin) {
-    location.hash = '/';
+    location.hash = '#/';
     return null;
   }
 
@@ -54,7 +54,7 @@ export function checkAuthenticatedRoute(page) {
   const isLogin = !!getAccessToken();
 
   if (!isLogin) {
-    location.hash = '/login';
+    location.hash = '#/login';
     return null;
   }
 

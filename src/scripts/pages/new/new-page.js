@@ -97,8 +97,8 @@ export default class NewPage {
             <div class="form-buttons">
               <span id="submit-button-container">
                 <button class="btn" type="submit">Create Story</button>
+                <a class="btn btn-outline" id="btnCancel">Cancel</a>
               </span>
-              <a class="btn btn-outline" href="#/">Cancel</a>
             </div>
           </form>
         </div>
@@ -115,6 +115,7 @@ export default class NewPage {
 
     this.#presenter.showNewFormMap();
     this.#setupForm();
+    this.cancelPopUp();
   }
 
   #setupForm() {
@@ -132,7 +133,7 @@ export default class NewPage {
 
       if (!response || !response.ok) {
         console.error('Gagal membuat laporan:', response?.message || 'Unknown error');
-        return; 
+        return;
       }
       const notificationData = {
         title: 'Story berhasil dibuat',
@@ -299,7 +300,7 @@ export default class NewPage {
     console.log(message);
     this.clearForm();
 
-    location.href = '/stories-project-idcamp';
+    location.href = '#/';
   }
 
   storeFailed(message) {
@@ -337,5 +338,17 @@ export default class NewPage {
     document.getElementById('submit-button-container').innerHTML = `
       <button class="btn" type="submit">Create Story</button>
     `;
+  }
+
+  cancelPopUp() {
+    document.getElementById('btnCancel').addEventListener('click', async (event) => {
+      Swal.fire({
+        icon: "error",
+        title: "Apakah kamu yakin ingin menginggalkan halaman ini?",
+      }).then(() => {
+        location.href='#/';
+      }
+      );
+    });
   }
 }

@@ -101,7 +101,14 @@ export default class ReportDetailPage {
   }
 
   postNewCommentFailed(message) {
-    alert(message);
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: message,
+    }).then(() => {
+      console.error(message);
+    }
+    );
   }
 
   clearForm() {
@@ -121,7 +128,14 @@ export default class ReportDetailPage {
     console.log(message);
   }
   saveToBookmarkFailed(message) {
-    alert(message);
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: message,
+    }).then(() => {
+      console.error(message);
+    }
+    );
   }
   renderRemoveButton() {
     document.getElementById('save-actions-container').innerHTML =
@@ -136,7 +150,14 @@ export default class ReportDetailPage {
     console.log(message);
   }
   removeFromBookmarkFailed(message) {
-    alert(message);
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: message,
+    }).then(() => {
+      console.error(message);
+    }
+    );
   }
 
   showReportDetailLoading() {
